@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Now | Superclips</title>
+  <meta name="description" content="Book your appointment at Superclips — choose your service, stylist, and time.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* =========================================================
+   Superclips — Luxury salon site
+   Palette: navy / cream / gold
+   ========================================================= */
+
+:root {
+  --color-navy: #1b2a4a;
+  --color-navy-dark: #0f1a30;
+  --color-cream: #f7f1e3;
+  --color-cream-deep: #efe4cc;
+  --color-gold: #c9a227;
+  --color-gold-light: #e4c667;
+  --color-surface: #ffffff;
+  --color-text: #1b2a4a;
+  --color-text-muted: #6b7280;
+  --color-border: #e5dcc3;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+  --heading-weight: 600;
+  --letter-spacing: 0.02em;
+  --radius: 4px;
+  --radius-button: 2px;
+  --shadow: 0 12px 32px rgba(15, 26, 48, 0.08);
+
+  --section-padding: 88px;
+  --gap: 28px;
+
+  --reveal-duration: 1000ms;
+  --reveal-easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-distance: 48px;
+  --reveal-scale: 0.97;
+}
+
+/* ---------- Reset & base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--color-gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+h1 { font-size: clamp(2.4rem, 5.5vw, 3.8rem); margin-bottom: 1rem; }
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); margin-bottom: 1.5rem; }
+h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; color: var(--color-text); }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.6rem;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: var(--section-padding) 0; }
+.alt-bg { background: var(--color-surface); }
+.navy-bg { background: var(--color-navy); }
+.navy-bg h1, .navy-bg h2, .navy-bg h3, .navy-bg p, .navy-bg .eyebrow { color: var(--color-cream); }
+.navy-bg .eyebrow { color: var(--color-gold-light); }
+
+.text-center { text-align: center; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.95em 2.2em;
+  border-radius: var(--radius-button);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.2s ease, color 0.2s ease;
+  border: 2px solid transparent;
+}
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+.btn-primary:hover { opacity: 0.9; text-decoration: none; }
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+.btn-outline:hover { background: var(--color-gold); color: var(--color-navy); text-decoration: none; }
+.navy-bg .btn-outline { border-color: var(--color-cream); color: var(--color-cream); }
+.navy-bg .btn-outline:hover { background: var(--color-cream); color: var(--color-navy); }
+
+.center-cta { text-align: center; margin-top: 2.5rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  color: var(--color-cream);
+  text-decoration: none;
+}
+.logo span { color: var(--color-gold); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-cream);
+  border-radius: 2px;
+}
+
+.site-nav .nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
+}
+.nav-list a {
+  color: var(--color-cream);
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+  opacity: 0.85;
+}
+.nav-list a:hover,
+.nav-list a.active {
+  color: var(--color-gold-light);
+  border-bottom-color: var(--color-gold);
+  opacity: 1;
+}
+.nav-list a.nav-cta {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  padding: 0.6em 1.4em;
+  border-radius: var(--radius-button);
+  border-bottom: none;
+  opacity: 1;
+}
+.nav-list a.nav-cta:hover {
+  opacity: 0.9;
+  color: var(--color-navy);
+  border-bottom: none;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: calc(var(--section-padding) * 1.3) 0 var(--section-padding);
+  background: linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy) 70%, var(--color-cream) 100%);
+  text-align: center;
+}
+.hero .eyebrow { color: var(--color-gold-light); }
+.hero h1, .hero p { color: var(--color-cream); }
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--color-cream);
+  opacity: 0.85;
+  max-width: 36em;
+  margin: 0 auto 2rem;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ---------- Image placeholders ---------- */
+.img-placeholder {
+  background: var(--color-cream-deep);
+  border: 1px dashed var(--color-gold);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------- Grids & cards ---------- */
+.grid { display: grid; gap: var(--gap); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+/* ---------- Staff cards ---------- */
+.staff-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  object-fit: cover;
+  margin-bottom: 1.2rem;
+}
+.staff-card { text-align: center; }
+.staff-role {
+  color: var(--color-gold);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- Services ---------- */
+.service-card { text-align: center; }
+.service-price {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+  margin: 0.4rem 0 0.8rem;
+}
+
+/* ---------- About / history ---------- */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: center;
+}
+.about-media .img-placeholder { aspect-ratio: 4/3; }
+
+.location-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+.location-details p { margin-bottom: 0.4rem; color: var(--color-text-muted); }
+.map-wrap { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); }
+.map-wrap iframe { display: block; width: 100%; }
+
+/* ---------- Booking page ---------- */
+.booking-steps {
+  display: grid;
+  gap: 2.5rem;
+}
+.booking-step .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-right: 0.6rem;
+}
+.booking-step h2 { display: flex; align-items: center; }
+
+.service-select-grid,
+.staff-select-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+.select-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.select-card:hover { border-color: var(--color-gold); transform: translateY(-3px); }
+.select-card.is-selected { border-color: var(--color-gold); background: var(--color-cream); }
+.select-card h3 { margin-bottom: 0.3rem; }
+.select-card .service-price { font-size: 1.3rem; margin: 0.2rem 0 0; }
+.select-card .staff-photo { aspect-ratio: 1/1; margin-bottom: 0.8rem; }
+
+.schedule-table-wrap { overflow-x: auto; }
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.schedule-table caption {
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  padding: 1rem 1.2rem 0.6rem;
+  color: var(--color-navy);
+}
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  font-size: 0.92rem;
+}
+.schedule-table th {
+  background: var(--color-navy);
+  color: var(--color-cream);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.schedule-table td.slot-time {
+  background: var(--color-cream);
+  font-weight: 600;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+.schedule-note {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.6rem;
+}
+
+.staff-schedules { display: grid; gap: 2.5rem; }
+
+.booking-embed {
+  background: var(--color-surface);
+  border: 2px dashed var(--color-gold);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.booking-embed h3 { margin-bottom: 0.6rem; }
+.booking-embed p { max-width: 42em; margin: 0 auto 1rem; color: var(--color-text-muted); }
+.booking-embed code {
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.15em 0.5em;
+  font-size: 0.85em;
+}
+
+/* ---------- Testimonials ---------- */
+.stars { color: var(--color-gold); display: flex; gap: 2px; margin-bottom: 0.8rem; }
+.quote { font-style: italic; }
+.testimonial-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 0;
+}
+
+/* ---------- CTA banner ---------- */
+.cta-banner { text-align: center; }
+.cta-banner h2, .cta-banner p { color: var(--color-cream); }
+
+/* ---------- Page header ---------- */
+.page-header {
+  padding: calc(var(--section-padding) * 0.65) 0;
+  background: var(--color-navy);
+  text-align: center;
+}
+.page-header h1, .page-header .hero-sub { color: var(--color-cream); }
+.page-header .hero-sub { margin: 0.6rem auto 0; opacity: 0.85; }
+
+/* ---------- Contact page ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+}
+.contact-card { text-align: center; }
+.contact-card h3 { margin-bottom: 0.2rem; }
+.contact-card .staff-role { margin-bottom: 0.8rem; }
+.contact-card p { margin-bottom: 0.3rem; color: var(--color-text-muted); }
+.contact-card a { color: var(--color-navy); font-weight: 600; }
+.contact-card a:hover { color: var(--color-gold); }
+
+.salon-contact {
+  background: var(--color-navy);
+  color: var(--color-cream);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+}
+.salon-contact h2, .salon-contact h3, .salon-contact p { color: var(--color-cream); }
+.salon-contact a { color: var(--color-gold-light); font-weight: 600; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-navy-dark);
+  color: var(--color-cream);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--gap);
+  padding: var(--section-padding) 0 2rem;
+}
+.footer-col h3 { color: var(--color-gold-light); margin-bottom: 0.8rem; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.footer-col p, .footer-col a { color: var(--color-cream); opacity: 0.8; }
+.footer-col a:hover { opacity: 1; }
+.footer-brand .logo { color: var(--color-cream); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+.footer-bottom p { margin-bottom: 0; }
+
+/* ---------- Scroll reveal + premium animation tier ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance)) scale(var(--reveal-scale));
+  transition: opacity var(--reveal-duration) var(--reveal-easing),
+              transform var(--reveal-duration) var(--reveal-easing);
+}
+.reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+
+.grid { perspective: 1200px; }
+.card, .select-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card:hover { box-shadow: 0 20px 45px rgba(15, 26, 48, 0.16); }
+
+.hero-media { will-change: transform; }
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+.btn-primary:hover::after { left: 125%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .card, .select-card, .btn-primary::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 920px) {
+  .grid-3, .grid-4, .service-select-grid, .staff-select-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-inner, .location-inner, .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .grid-2, .grid-3, .grid-4, .service-select-grid, .staff-select-grid { grid-template-columns: 1fr; }
+  .nav-toggle { display: flex; }
+  .site-nav {
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    background: var(--color-navy);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: none;
+  }
+  .site-nav.open { display: block; }
+  .site-nav .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1rem 24px 1.5rem;
+  }
+  .nav-list li { width: 100%; }
+  .nav-list a { display: block; padding: 0.8rem 0; }
+  .nav-list a.nav-cta { display: inline-block; margin-top: 0.5rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Super<span>clips</span></a>
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="booking.html" class="nav-cta active">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-header reveal">
+    <div class="container">
+      <span class="eyebrow">Book Your Visit</span>
+      <h1>Book an Appointment</h1>
+      <p class="hero-sub">Choose your service, pick a stylist, and find a time that works for you.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container booking-steps">
+
+      <!-- Step 1: Service -->
+      <div class="booking-step reveal">
+        <h2><span class="step-num">1</span> Choose a Service</h2>
+        <div class="service-select-grid">
+          <div class="select-card" data-select-group="service">
+            <h3>Haircut</h3>
+            <p class="service-price">$50</p>
+          </div>
+          <div class="select-card" data-select-group="service">
+            <h3>Perm</h3>
+            <p class="service-price">$80</p>
+          </div>
+          <div class="select-card" data-select-group="service">
+            <h3>Hair Dye</h3>
+            <p class="service-price">$70</p>
+          </div>
+          <div class="select-card" data-select-group="service">
+            <h3>Facial</h3>
+            <p class="service-price">$90</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Stylist -->
+      <div class="booking-step reveal">
+        <h2><span class="step-num">2</span> Choose Your Stylist</h2>
+        <div class="staff-select-grid">
+          <div class="select-card" data-select-group="staff" data-scroll-target="schedule-susie">
+            <div class="img-placeholder staff-photo"><span>Photo of<br>Susie</span></div>
+            <h3>Susie</h3>
+            <p class="staff-role">Mon–Fri</p>
+          </div>
+          <div class="select-card" data-select-group="staff" data-scroll-target="schedule-marie">
+            <div class="img-placeholder staff-photo"><span>Photo of<br>Marie</span></div>
+            <h3>Marie</h3>
+            <p class="staff-role">Mon–Sat</p>
+          </div>
+          <div class="select-card" data-select-group="staff" data-scroll-target="schedule-krista">
+            <div class="img-placeholder staff-photo"><span>Photo of<br>Krista</span></div>
+            <h3>Krista</h3>
+            <p class="staff-role">Mon–Fri</p>
+          </div>
+          <div class="select-card" data-select-group="staff" data-scroll-target="schedule-sadie">
+            <div class="img-placeholder staff-photo"><span>Photo of<br>Sadie</span></div>
+            <h3>Sadie</h3>
+            <p class="staff-role">Mon–Fri</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Time -->
+      <div class="booking-step reveal">
+        <h2><span class="step-num">3</span> Choose a Time</h2>
+        <p class="hero-sub" style="margin-left:0;">Each stylist's available days and time slots are shown below. Once the booking system is connected, these will update in real time and a slot disappears the moment someone else books it.</p>
+
+        <div class="staff-schedules">
+
+          <div class="schedule-table-wrap reveal" id="schedule-susie">
+            <table class="schedule-table">
+              <caption>Susie — Mon–Fri, 1-hour appointments</caption>
+              <thead>
+                <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="slot-time">9:00 – 10:00 AM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">10:00 – 11:00 AM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">11:00 – 12:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">12:00 – 1:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">1:00 – 2:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">2:00 – 3:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">3:00 – 4:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">4:00 – 5:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+              </tbody>
+            </table>
+            <p class="schedule-note">Sample schedule — slots shown as "Available" will reflect real-time booking status once connected to the booking platform.</p>
+          </div>
+
+          <div class="schedule-table-wrap reveal" id="schedule-marie">
+            <table class="schedule-table">
+              <caption>Marie — Mon–Sat, 1 hour 15 min appointments</caption>
+              <thead>
+                <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="slot-time">10:00 – 11:15 AM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">11:15 AM – 12:30 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">12:30 – 1:45 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">1:45 – 3:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">3:00 – 4:15 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">4:15 – 5:30 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+              </tbody>
+            </table>
+            <p class="schedule-note">Sample schedule — slots shown as "Available" will reflect real-time booking status once connected to the booking platform.</p>
+          </div>
+
+          <div class="schedule-table-wrap reveal" id="schedule-krista">
+            <table class="schedule-table">
+              <caption>Krista — Mon–Fri, 1 hour 15 min appointments</caption>
+              <thead>
+                <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="slot-time">9:00 – 10:15 AM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">10:15 – 11:30 AM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">11:30 AM – 12:45 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">12:45 – 2:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">2:00 – 3:15 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">3:15 – 4:30 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+              </tbody>
+            </table>
+            <p class="schedule-note">Sample schedule — slots shown as "Available" will reflect real-time booking status once connected to the booking platform.</p>
+          </div>
+
+          <div class="schedule-table-wrap reveal" id="schedule-sadie">
+            <table class="schedule-table">
+              <caption>Sadie — Mon–Fri, 1-hour appointments</caption>
+              <thead>
+                <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="slot-time">10:00 – 11:00 AM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">11:00 – 12:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">12:00 – 1:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">1:00 – 2:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">2:00 – 3:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">3:00 – 4:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">4:00 – 5:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+                <tr><td class="slot-time">5:00 – 6:00 PM</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td><td>Available</td></tr>
+              </tbody>
+            </table>
+            <p class="schedule-note">Sample schedule — slots shown as "Available" will reflect real-time booking status once connected to the booking platform.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Step 4: Real booking widget -->
+      <div class="booking-step reveal">
+        <h2><span class="step-num">4</span> Confirm Your Booking</h2>
+        <div class="booking-embed">
+          <h3>Live booking coming soon</h3>
+          <p>
+            This is where the real booking widget goes — once Superclips has an
+            account with a scheduling platform (e.g. <strong>Acuity Scheduling</strong>,
+            <strong>Square Appointments</strong>, or <strong>Fresha</strong>), its embed code
+            gets dropped in right here. That connects this page to a live calendar for
+            each stylist: clients pick an open slot, it's instantly marked unavailable
+            to everyone else, and Susie/Marie/Krista/Sadie each keep their own schedule
+            and appointment lengths.
+          </p>
+          <p>Acuity is a good fit here since it supports a different schedule and appointment length per staff member — exactly matching the hours above.</p>
+          <p>Once you have an embed code, send it over and this section gets swapped for the live widget — no other changes needed.</p>
+          <a href="contact.html" class="btn btn-outline">Or contact us to book</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="logo">Super<span style="color: var(--color-gold-light);">clips</span></a>
+        <p style="margin-top: 0.8rem;">[Placeholder] A luxury salon experience — haircuts, color, perms, and facials.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <p><a href="about.html">About</a></p>
+        <p><a href="booking.html">Book Now</a></p>
+        <p><a href="testimonials.html">Testimonials</a></p>
+        <p><a href="contact.html">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Visit Us</h3>
+        <p>[Placeholder address]</p>
+        <p>[Placeholder phone]</p>
+        <p>[Placeholder email]</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Superclips. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Scroll reveal animations
+  var revealEls = document.querySelectorAll('.reveal');
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (revealEls.length) {
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(function (el) { el.classList.add('in-view'); });
+    } else {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach(function (el) { observer.observe(el); });
+    }
+  }
+
+  if (!reducedMotion) {
+    // Card tilt on mouse move
+    document.querySelectorAll('.card, .select-card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        var rotateX = (0.5 - py) * 8;
+        var rotateY = (px - 0.5) * 8;
+        card.style.transform = 'translateY(-4px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+
+    // Hero parallax
+    var heroMedia = document.querySelector('.hero-media');
+    if (heroMedia) {
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var offset = Math.min(window.scrollY * 0.15, 60);
+          heroMedia.style.transform = 'translateY(' + offset + 'px)';
+          ticking = false;
+        });
+      }, { passive: true });
+    }
+  }
+
+  // Booking page: service/staff selection highlighting
+  document.querySelectorAll('.select-card[data-select-group]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var group = card.getAttribute('data-select-group');
+      document.querySelectorAll('.select-card[data-select-group="' + group + '"]').forEach(function (c) {
+        c.classList.remove('is-selected');
+      });
+      card.classList.add('is-selected');
+
+      // If selecting a staff member, scroll their schedule into view
+      var target = card.getAttribute('data-scroll-target');
+      if (target) {
+        var el = document.getElementById(target);
+        if (el) {
+          el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+});
+
+</script>
+</body>
+</html>
