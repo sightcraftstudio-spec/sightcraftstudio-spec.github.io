@@ -91,7 +91,7 @@
     <p class="steps-note">Fields marked * are required. Everything else helps but is optional.</p>
   </header>
 
-  <form action="https://formsubmit.co/sightcraft.studio@gmail.com" method="POST">
+  <form action="https://formsubmit.co/sightcraft.studio@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_subject" value="New website request — sightcraft.studio">
     <input type="hidden" name="_captcha" value="false">
     <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
@@ -143,6 +143,12 @@
       <div class="field">
         <label for="area">What area do you serve?</label>
         <input type="text" id="area" name="Service area" placeholder="Austin, Cedar Park, Round Rock">
+      </div>
+      <div class="field">
+        <label for="photos">Photos of your work or your business <small>— up to 5, the best ones you have</small></label>
+        <input type="file" id="photos" name="Photos" accept="image/*" multiple
+          style="padding:10px; border:1px dashed var(--line); border-radius:8px; width:100%; background:var(--bg-soft); font-size:14px; cursor:pointer;">
+        <p style="font-size:13px; color:var(--muted); margin-top:6px;">Real photos beat stock photos every time. If you have lots, send the rest to sightcraft.studio@gmail.com after submitting.</p>
       </div>
       <div class="field">
         <label>What should the site have? <small>— pick all that apply</small></label>
