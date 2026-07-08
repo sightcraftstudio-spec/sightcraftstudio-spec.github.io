@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Maple &amp; Co. Cleaning</title>
+<meta name="description" content="Services offered by Maple &amp; Co. Cleaning: Residential Cleaning, Office Cleaning, Move-In / Move-Out Cleaning, Deep Cleaning">
+<meta name="keywords" content="house cleaning Springfield IL, office cleaning, residential cleaning service, maid service"><meta property="og:title" content="Services | Maple &amp; Co. Cleaning">
+<meta property="og:description" content="Services offered by Maple &amp; Co. Cleaning: Residential Cleaning, Office Cleaning, Move-In / Move-Out Cleaning, Deep Cleaning">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maple &amp; Co. Cleaning">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Maple & Co. Cleaning",
+  "description": "Maple & Co. Cleaning provides residential and office cleaning services in Springfield, IL. Reliable, detail-oriented, and fully insured.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "412 Birchwood Lane, Springfield, IL 62704"
+  },
+  "telephone": "(217) 555-0142",
+  "email": "hello@mapleandco.example"
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Nunito+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #4f6f52;
+  --color-primary-dark: #3a5240;
+  --color-secondary: #e8e3d3;
+  --color-accent: #d98e5a;
+  --color-background: #fbf9f4;
+  --color-surface: #ffffff;
+  --color-text: #2b2b26;
+  --color-text-muted: #6b6b62;
+  --color-border: #e2ded2;
+
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Nunito Sans', sans-serif;
+  --heading-weight: 600;
+  --letter-spacing: normal;
+  --radius: 10px;
+  --radius-button: 999px;
+  --shadow: 0 4px 14px rgba(0,0,0,0.06);
+  --section-padding: 72px;
+  --gap: 24px;
+
+  --reveal-duration: 600ms;
+  --reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-distance: 16px;
+  --reveal-scale: 1;
+}
+</style>
+<style>
+/* ---------- Reset & base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 1rem; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 1.5rem; }
+h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; color: var(--color-text); }
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: var(--section-padding) 0; }
+.alt-bg { background: var(--color-secondary); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.85em 1.8em;
+  border-radius: var(--radius-button);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  border: 2px solid transparent;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+.btn-primary:hover { opacity: 0.9; text-decoration: none; }
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-outline:hover { background: var(--color-primary); color: var(--color-surface); text-decoration: none; }
+
+.center-cta { text-align: center; margin-top: 2.5rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  font-size: 1.3rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.logo-img { height: 40px; width: auto; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text);
+  border-radius: 2px;
+}
+
+.site-nav .nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-list a {
+  color: var(--color-text);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+}
+.nav-list a:hover,
+.nav-list a.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+.nav-list a.nav-cta {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  padding: 0.55em 1.4em;
+  border-radius: var(--radius-button);
+  border-bottom: none;
+}
+.nav-list a.nav-cta:hover {
+  opacity: 0.9;
+  color: var(--color-surface);
+  border-bottom: none;
+}
+
+/* ---------- Hero ---------- */
+.hero { padding: calc(var(--section-padding) * 1.2) 0 var(--section-padding); }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--gap);
+  align-items: center;
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  max-width: 32em;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+.hero-media img,
+.hero-placeholder {
+  border-radius: var(--radius);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ---------- Image placeholders ---------- */
+.img-placeholder {
+  background: var(--color-secondary);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  text-align: center;
+}
+.hero-placeholder { aspect-ratio: 4/3; font-size: 1.4rem; }
+
+/* ---------- Grids & cards ---------- */
+.grid { display: grid; gap: var(--gap); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease;
+}
+.anim-subtle .card:hover,
+.anim-dynamic .card:hover {
+  transform: translateY(-4px);
+}
+.card-icon {
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+}
+.card p:last-child { margin-bottom: 0; }
+
+/* ---------- About sections ---------- */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: center;
+}
+.about-media img,
+.about-media .img-placeholder { aspect-ratio: 4/3; object-fit: cover; }
+.about-text p:last-of-type { margin-bottom: 1.5rem; }
+
+/* ---------- Testimonials ---------- */
+.stars { color: var(--color-accent); display: flex; gap: 2px; margin-bottom: 0.8rem; }
+.quote { font-style: italic; }
+.testimonial-name { font-weight: 600; color: var(--color-text-muted); margin-bottom: 0; }
+
+/* ---------- CTA banner ---------- */
+.cta-banner {
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+.cta-banner h2, .cta-banner p { color: var(--color-surface); }
+.cta-inner { text-align: center; }
+.cta-inner .btn-primary {
+  background: var(--color-surface);
+  color: var(--color-primary);
+}
+
+/* ---------- Page header ---------- */
+.page-header {
+  padding: calc(var(--section-padding) * 0.7) 0;
+  background: var(--color-secondary);
+  text-align: center;
+}
+.page-header .hero-sub { margin: 0 auto; }
+
+/* ---------- Team ---------- */
+.team-card { text-align: center; }
+.team-photo {
+  width: 120px; height: 120px;
+  border-radius: 999px;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  aspect-ratio: 1/1;
+}
+.team-photo span { font-size: 2.2rem; }
+.team-role { color: var(--color-primary); font-weight: 600; margin-bottom: 0.6rem; }
+
+/* ---------- Services list (services page) ---------- */
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: center;
+  padding: calc(var(--gap) * 1.2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.service-row:last-child { border-bottom: none; }
+.service-row.reverse .service-media { order: 2; }
+.service-media img,
+.service-media .img-placeholder { aspect-ratio: 4/3; object-fit: cover; }
+.service-media .img-placeholder .card-icon { margin-bottom: 0; }
+
+/* ---------- Contact page ---------- */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+.hours-list { margin-top: 1rem; }
+.hours-list p { margin-bottom: 0.2rem; color: var(--color-text-muted); }
+
+.booking-callout {
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.booking-callout h2 { margin-bottom: 0.4rem; }
+.booking-callout .btn { margin-top: 0.6rem; }
+
+.contact-form { display: flex; flex-direction: column; gap: 0.4rem; }
+.contact-form label { font-weight: 600; margin-top: 0.6rem; }
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--font-body);
+  padding: 0.7em 1em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.contact-form button { margin-top: 1rem; align-self: flex-start; }
+
+.map-wrap { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); }
+.map-wrap iframe { display: block; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-primary-dark);
+  color: var(--color-secondary);
+  margin-top: var(--section-padding);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--gap);
+  padding: var(--section-padding) 0 2rem;
+}
+.footer-col h3 { color: var(--color-secondary); margin-bottom: 0.8rem; font-size: 1rem; }
+.footer-col p, .footer-col a { color: var(--color-secondary); opacity: 0.85; }
+.footer-col a:hover { opacity: 1; }
+.footer-brand .logo { color: var(--color-secondary); }
+.social-links { display: flex; gap: 1rem; margin-top: 0.8rem; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+.footer-bottom p { margin-bottom: 0; }
+
+/* ---------- Scroll reveal animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance)) scale(var(--reveal-scale));
+  transition: opacity var(--reveal-duration) var(--reveal-easing),
+              transform var(--reveal-duration) var(--reveal-easing);
+}
+.reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+body.anim-none .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* ---------- Premium animation tier ---------- */
+/* Smoother, tilt-ready cards */
+body.anim-premium .grid { perspective: 1200px; }
+body.anim-premium .card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+body.anim-premium .card:hover {
+  box-shadow: 0 20px 45px rgba(0,0,0,0.14);
+}
+
+/* Animated icon pop-in once a card reveals */
+body.anim-premium .card-icon {
+  display: inline-flex;
+}
+body.anim-premium .reveal.in-view .card-icon {
+  animation: icon-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes icon-pop {
+  0% { transform: scale(0.4) rotate(-10deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Hero parallax media (transform applied via JS on scroll) */
+body.anim-premium .hero-media { will-change: transform; }
+
+/* Button hover shine */
+body.anim-premium .btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+body.anim-premium .btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+body.anim-premium .btn-primary:hover::after { left: 125%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, body.anim-premium .card, body.anim-premium .card-icon, body.anim-premium .btn-primary::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+  .service-row, .service-row.reverse { grid-template-columns: 1fr; }
+  .service-row.reverse .service-media { order: 0; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .nav-toggle { display: flex; }
+  .site-nav {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: none;
+  }
+  .site-nav.open { display: block; }
+  .site-nav .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1rem 24px 1.5rem;
+  }
+  .nav-list li { width: 100%; }
+  .nav-list a { display: block; padding: 0.8rem 0; }
+  .nav-list a.nav-cta { display: inline-block; margin-top: 0.5rem; }
+}
+
+</style></head>
+<body class="tone-warm anim-subtle">
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">
+Maple &amp; Co. Cleaning    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+        <li><a href="contact.html" class="nav-cta">Get in touch</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><main id="main">
+
+<section class="page-header reveal">
+  <div class="container">
+    <h1>What we offer</h1>
+    <p class="hero-sub">Spotless homes, stress-free living</p>
+  </div>
+</section>
+
+<section class="section services-list">
+  <div class="container">
+    <div class="service-row reveal" style="transition-delay: 0ms">
+      <div class="service-media">
+        <div class="img-placeholder"><div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></div></div>
+      </div>
+      <div class="service-text">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></div>
+        <h2>Residential Cleaning</h2>
+        <p>Recurring or one-time deep cleans for homes of any size — kitchens, bathrooms, bedrooms, and living spaces.</p>
+      </div>
+    </div>
+    <div class="service-row reveal reverse" style="transition-delay: 80ms">
+      <div class="service-media">
+        <div class="img-placeholder"><div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div></div>
+      </div>
+      <div class="service-text">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
+        <h2>Office Cleaning</h2>
+        <p>Flexible after-hours cleaning plans for offices, keeping your workspace fresh for clients and staff.</p>
+      </div>
+    </div>
+    <div class="service-row reveal" style="transition-delay: 160ms">
+      <div class="service-media">
+        <div class="img-placeholder"><div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><path d="M11 11 20 20"/><path d="M16.5 19.5 19.5 16.5"/></svg></div></div>
+      </div>
+      <div class="service-text">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><path d="M11 11 20 20"/><path d="M16.5 19.5 19.5 16.5"/></svg></div>
+        <h2>Move-In / Move-Out Cleaning</h2>
+        <p>Detailed top-to-bottom cleans to help you settle into a new place or hand over a spotless one.</p>
+      </div>
+    </div>
+    <div class="service-row reveal reverse" style="transition-delay: 240ms">
+      <div class="service-media">
+        <div class="img-placeholder"><div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2M6.5 6.5 5 5M19 19l-1.5-1.5M6.5 17.5 5 19M19 5l-1.5 1.5"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+      </div>
+      <div class="service-text">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2M6.5 6.5 5 5M19 19l-1.5-1.5M6.5 17.5 5 19M19 5l-1.5 1.5"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h2>Deep Cleaning</h2>
+        <p>A thorough, detail-focused clean covering baseboards, vents, appliances, and the spots regular cleanings miss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-banner reveal">
+  <div class="container cta-inner">
+    <h2>Not sure where to start?</h2>
+    <p>Reach out and we&#39;ll help point you in the right direction.</p>
+    <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col footer-brand">
+      <div class="logo">Maple &amp; Co. Cleaning</div>
+      <p>Spotless homes, stress-free living</p>
+    </div>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>412 Birchwood Lane, Springfield, IL 62704</p>
+      <p><a href="tel:2175550142">(217) 555-0142</a></p>
+      <p><a href="mailto:hello@mapleandco.example">hello@mapleandco.example</a></p>
+    </div>
+    <div class="footer-col">
+      <h3>Hours</h3>
+      <p>Mon–Fri: 8am – 6pm</p>
+      <p>Saturday: 9am – 2pm</p>
+      <p>Sunday: Closed</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Maple &amp; Co. Cleaning. All rights reserved.</p>
+  </div>
+</footer><script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Scroll reveal animations
+  var revealEls = document.querySelectorAll('.reveal');
+  if (!revealEls.length) return;
+
+  if (document.body.classList.contains('anim-none') || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(function (el) { observer.observe(el); });
+
+  // Premium tier extras: card tilt + hero parallax
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (document.body.classList.contains('anim-premium') && !reducedMotion) {
+    document.querySelectorAll('.card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        var rotateX = (0.5 - py) * 10;
+        var rotateY = (px - 0.5) * 10;
+        card.style.transform = 'translateY(-6px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+
+    var heroMedia = document.querySelector('.hero-media');
+    if (heroMedia) {
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var offset = Math.min(window.scrollY * 0.15, 60);
+          heroMedia.style.transform = 'translateY(' + offset + 'px)';
+          ticking = false;
+        });
+      }, { passive: true });
+    }
+  }
+});
+
+</script>
+</body>
+</html>
