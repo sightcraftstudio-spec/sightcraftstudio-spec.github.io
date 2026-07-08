@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sightcraft.studio — websites for local businesses</title>
+<meta name="description" content="Clean, fast websites for local businesses. $300 flat, live in a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16161a;
+    --muted: #6b6b76;
+    --line: #e8e8ec;
+    --bg: #ffffff;
+    --bg-soft: #f7f7f9;
+    --accent: #2d5bff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.15; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; text-decoration: none; color: var(--ink); }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn {
+    display: inline-block; padding: 12px 24px; border-radius: 8px;
+    background: var(--ink); color: #fff !important; text-decoration: none;
+    font-weight: 500; font-size: 15px; transition: background .15s;
+  }
+  .btn:hover { background: var(--accent); }
+  .btn-ghost { background: transparent; color: var(--ink) !important; border: 1px solid var(--line); }
+  .btn-ghost:hover { background: var(--bg-soft); border-color: var(--ink); }
+
+  header.hero { padding: 110px 0 90px; }
+  .hero h1 { font-size: clamp(38px, 6vw, 64px); max-width: 760px; letter-spacing: -0.5px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { margin: 24px 0 36px; font-size: 20px; color: var(--muted); max-width: 560px; }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero .fine { margin-top: 20px; font-size: 14px; color: var(--muted); }
+
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  .kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+  .lede { color: var(--muted); font-size: 18px; max-width: 620px; margin-bottom: 48px; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .card {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 28px;
+  }
+  .card h3 { font-size: 20px; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 15.5px; }
+  .card .num { font-family: 'Fraunces', serif; font-size: 15px; color: var(--accent); font-weight: 600; margin-bottom: 14px; display: block; }
+
+  .work-item {
+    border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg);
+  }
+  .work-thumb {
+    aspect-ratio: 16/10; background: linear-gradient(135deg, #eef1ff 0%, #f7f7f9 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 14px; border-bottom: 1px solid var(--line);
+  }
+  .work-item .meta { padding: 18px 20px; }
+  .work-item .meta strong { display: block; font-size: 16px; margin-bottom: 2px; }
+  .work-item .meta span { font-size: 14px; color: var(--muted); }
+
+  .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 720px; }
+  .price-card { border: 1px solid var(--line); border-radius: 12px; padding: 36px 32px; background: var(--bg); }
+  .price-card.featured { border-color: var(--accent); border-width: 2px; }
+  .price-card .tag { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  .price-card .amount { font-family: 'Fraunces', serif; font-size: 44px; font-weight: 600; margin: 12px 0 4px; }
+  .price-card .amount small { font-size: 17px; color: var(--muted); font-family: 'Inter', sans-serif; font-weight: 400; }
+  .price-card ul { list-style: none; margin: 22px 0 28px; }
+  .price-card li { padding: 7px 0 7px 26px; position: relative; font-size: 15.5px; color: var(--ink); }
+  .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+
+  .steps { counter-reset: step; }
+  .about-flex { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
+  .about-flex > div { flex: 1; min-width: 280px; }
+  .about-flex p { color: var(--muted); margin-bottom: 16px; }
+  .about-flex p strong { color: var(--ink); }
+
+  footer { border-top: 1px solid var(--line); padding: 60px 0; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .foot-inner p { color: var(--muted); font-size: 14px; }
+  #contact .card { max-width: 560px; }
+  #contact .card a.mail { color: var(--accent); font-weight: 500; text-decoration: none; font-size: 18px; }
+
+  @media (max-width: 640px) {
+    .nav-links a:not(.btn) { display: none; }
+    header.hero { padding: 70px 0 60px; }
+    section { padding: 60px 0; }
+  }
+
+  /* ——— animations ——— */
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  .hero h1 { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .hero p { animation: rise .7s .12s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .cta-row { animation: rise .7s .24s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .fine { animation: rise .7s .34s cubic-bezier(.2,.7,.2,1) both; }
+
+  .hero h1 em { position: relative; white-space: nowrap; }
+  .hero h1 em::after {
+    content: ""; position: absolute; left: 0; bottom: 4px; height: 3px; width: 100%;
+    background: var(--accent); transform: scaleX(0); transform-origin: left;
+    animation: draw .6s .8s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes draw { to { transform: scaleX(1); } }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .stagger > * { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+  .stagger.in > * { opacity: 1; transform: none; }
+  .stagger.in > *:nth-child(2) { transition-delay: .1s; }
+  .stagger.in > *:nth-child(3) { transition-delay: .2s; }
+  .stagger.in > *:nth-child(4) { transition-delay: .3s; }
+
+  .card, .work-item, .price-card { transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, border-color .25s; }
+  .card:hover, .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(22,22,26,.08); border-color: #d9d9e0; }
+  .work-item:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(22,22,26,.10); }
+  .work-item { cursor: pointer; }
+  .work-thumb { overflow: hidden; position: relative; }
+  .work-thumb .peek { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(45,91,255,.92); color: #fff; font-weight: 500; opacity: 0; transition: opacity .25s; }
+  .work-item:hover .peek { opacity: 1; }
+  .btn { transition: background .15s, transform .15s; }
+  .btn:hover { transform: translateY(-2px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .stagger > * { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">sightcraft<span>.studio</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How it works</a>
+      <a class="btn" href="intake.html">Get your site</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Your business deserves a website that actually <em>brings in customers</em>.</h1>
+    <p>Clean, fast, mobile-ready websites for local businesses. Flat price, no surprises, live within a week.</p>
+    <div class="cta-row">
+      <a class="btn" href="intake.html">Get your site — $300</a>
+      <a class="btn btn-ghost" href="#work">See the work</a>
+    </div>
+    <p class="fine">No deposit until you've seen a preview of your actual site.</p>
+  </div>
+</header>
+
+<section class="alt" id="why">
+  <div class="wrap">
+    <p class="kicker">Why sightcraft</p>
+    <h2>Most local business sites are outdated, slow, or missing.</h2>
+    <p class="lede">Your customers are searching for you on their phones right now. Here's what they get with a sightcraft site instead:</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>Fast &amp; mobile-first</h3>
+        <p>Loads instantly and looks sharp on every phone, tablet, and laptop. Most of your customers are on mobile — your site will be built for it.</p>
+      </div>
+      <div class="card">
+        <h3>Built to convert</h3>
+        <p>Clear hours, menus, services, and a big obvious way to call or book you. No clutter standing between a visitor and becoming a customer.</p>
+      </div>
+      <div class="card">
+        <h3>Zero hassle for you</h3>
+        <p>You run your business; I handle everything technical — domain, hosting, updates. You never touch code.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="kicker">Demo sites</p>
+    <h2>Click around real demo sites — not just screenshots.</h2>
+    <p class="lede">Every demo below is a fully working site you can open and explore. Yours would get the same treatment — and the first preview is free.</p>
+    <div class="grid3">
+      <a class="work-item" href="demos/superclips/index.html" style="text-decoration:none; color:inherit; display:block;">
+        <div class="work-thumb" style="font-family:'Fraunces',serif; font-size:22px; color:var(--ink);">Superclips<span class="peek">Open live demo →</span></div>
+        <div class="meta"><strong>Superclips</strong><span>Luxury hair salon — booking, testimonials, 5 pages</span></div>
+      </a>
+      <a class="work-item" href="demos/aurelia-spa/index.html" style="text-decoration:none; color:inherit; display:block;">
+        <div class="work-thumb" style="font-family:'Fraunces',serif; font-size:22px; color:var(--ink);">Aurelia Spa<span class="peek">Open live demo →</span></div>
+        <div class="meta"><strong>Aurelia Spa</strong><span>Day spa — services, calm and clean design</span></div>
+      </a>
+      <a class="work-item" href="demos/maple-co-cleaning/index.html" style="text-decoration:none; color:inherit; display:block;">
+        <div class="work-thumb" style="font-family:'Fraunces',serif; font-size:22px; color:var(--ink);">Maple &amp; Co.<span class="peek">Open live demo →</span></div>
+        <div class="meta"><strong>Maple &amp; Co. Cleaning</strong><span>Home cleaning service — quote-focused</span></div>
+      </a>
+      <a class="work-item" href="demos/forge-studio/index.html" style="text-decoration:none; color:inherit; display:block;">
+        <div class="work-thumb" style="font-family:'Fraunces',serif; font-size:22px; color:var(--ink);">Forge Studio<span class="peek">Open live demo →</span></div>
+        <div class="meta"><strong>Forge Studio</strong><span>Fitness studio — bold, service-driven</span></div>
+      </a>
+      <a class="work-item" href="demos/great-look-for-hair/index.html" style="text-decoration:none; color:inherit; display:block;">
+        <div class="work-thumb" style="font-family:'Fraunces',serif; font-size:22px; color:var(--ink);">Great Look for Hair<span class="peek">Open live demo →</span></div>
+        <div class="meta"><strong>Great Look for Hair</strong><span>Neighborhood salon — simple and effective</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="pricing">
+  <div class="wrap">
+    <p class="kicker">Pricing</p>
+    <h2>One flat price. No hourly billing, no surprises.</h2>
+    <p class="lede">You know exactly what you pay and exactly what you get.</p>
+    <div class="price-grid">
+      <div class="price-card featured">
+        <span class="tag">The website</span>
+        <div class="amount">$300 <small>one-time</small></div>
+        <ul>
+          <li>Custom design — no templates</li>
+          <li>Mobile-ready &amp; fast</li>
+          <li>Live within one week</li>
+          <li>Free preview before you pay</li>
+          <li>Two rounds of changes included</li>
+        </ul>
+        <a class="btn" href="intake.html">Start your site</a>
+      </div>
+      <div class="price-card">
+        <span class="tag">Care plan</span>
+        <div class="amount">$40 <small>/month</small></div>
+        <ul>
+          <li>Hosting &amp; domain managed</li>
+          <li>Unlimited small edits</li>
+          <li>Kept fast, secure &amp; updated</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Ask about care</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>From first message to live site in a week.</h2>
+    <div class="grid3">
+      <div class="card"><span class="num">01</span><h3>You tell me about your business</h3><p>A 15-minute chat or a few messages. What you do, who your customers are, what you want the site to accomplish.</p></div>
+      <div class="card"><span class="num">02</span><h3>I build your preview — free</h3><p>Within days you get a live link to your actual site. You pay nothing until you've seen it and want it.</p></div>
+      <div class="card"><span class="num">03</span><h3>It goes live under your name</h3><p>Your domain, your business, live on the internet. I hand you the keys — or keep maintaining it on the care plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="about">
+  <div class="wrap">
+    <p class="kicker">About</p>
+    <h2>Small studio. Big standards.</h2>
+    <div class="about-flex">
+      <div>
+        <p><strong>sightcraft.studio is run by Sawyer</strong> — an independent web designer who builds every site personally, start to finish.</p>
+        <p>No agencies, no middlemen, no $5,000 invoices. Just clean work, fast turnaround, and prices a local business can actually say yes to.</p>
+      </div>
+      <div>
+        <p>Because the studio is small, every client gets direct access to the person building their site — you message, I answer. Try getting that from a big agency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="kicker">Contact</p>
+    <h2>Want a free preview of your site?</h2>
+    <p class="lede">Answer a few questions about your business and you'll have a live preview link within days — no cost, no commitment.</p>
+    <div class="cta-row" style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px;">
+      <a class="btn" href="intake.html">Fill out the 5-minute form</a>
+    </div>
+    <div class="card">
+      <p style="margin-bottom:8px; color:var(--muted); font-size:15px;">Or email directly</p>
+      <a class="mail" href="mailto:sightcraft.studio@gmail.com">sightcraft.studio@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <a class="logo" href="#top">sightcraft<span>.studio</span></a>
+    <p>© 2026 sightcraft.studio — websites for local businesses</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('section .kicker, section h2, section .lede').forEach(el => {
+    el.classList.add('reveal'); io.observe(el);
+  });
+  document.querySelectorAll('.grid3, .price-grid, .about-flex').forEach(el => {
+    el.classList.add('stagger'); io.observe(el);
+  });
+</script>
+
+</body>
+</html>

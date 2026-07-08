@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start your website — sightcraft.studio</title>
+<meta name="description" content="Tell me about your business and get a free personalized website preview.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16161a;
+    --muted: #6b6b76;
+    --line: #e8e8ec;
+    --bg: #ffffff;
+    --bg-soft: #f7f7f9;
+    --accent: #2d5bff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); background: var(--bg-soft); line-height: 1.6; font-size: 16px; }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.15; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  nav { background: var(--bg); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1040px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; text-decoration: none; color: var(--ink); }
+  .logo span { color: var(--accent); }
+  .back { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 500; }
+  .back:hover { color: var(--ink); }
+
+  header { padding: 60px 0 12px; }
+  header h1 { font-size: clamp(30px, 5vw, 42px); }
+  header p { margin-top: 14px; color: var(--muted); font-size: 18px; max-width: 560px; }
+
+  .steps-note { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+  form { padding: 28px 0 80px; }
+  fieldset {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 12px;
+    padding: 28px; margin-top: 24px;
+  }
+  legend { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; padding: 0 10px; }
+  .field { margin-top: 18px; }
+  .field:first-of-type { margin-top: 8px; }
+  label { display: block; font-weight: 500; font-size: 15px; margin-bottom: 6px; }
+  label small { font-weight: 400; color: var(--muted); }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select {
+    width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px;
+    font: inherit; font-size: 15px; background: var(--bg); color: var(--ink);
+  }
+  input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+  textarea { min-height: 110px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 540px) { .row2 { grid-template-columns: 1fr; } }
+
+  .choices { display: flex; flex-wrap: wrap; gap: 10px; }
+  .choices input { position: absolute; opacity: 0; pointer-events: none; }
+  .choices label {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 999px;
+    padding: 9px 18px; cursor: pointer; font-weight: 500; font-size: 14.5px; margin: 0;
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  .choices label:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .choices input:checked + label { background: #eef1ff; border-color: var(--accent); color: var(--accent); }
+
+  .submit-row { margin-top: 28px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  button {
+    font: inherit; font-weight: 500; font-size: 16px; padding: 14px 32px;
+    background: var(--ink); color: #fff; border: 0; border-radius: 8px; cursor: pointer;
+    transition: background .15s, transform .15s;
+  }
+  button:hover { background: var(--accent); transform: translateY(-2px); }
+  .submit-row p { font-size: 13.5px; color: var(--muted); }
+  .hp { position: absolute; left: -9999px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">sightcraft<span>.studio</span></a>
+    <a class="back" href="index.html">← Back to site</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header>
+    <h1>Tell me about your business.</h1>
+    <p>Answer what you can — takes about 5 minutes. I'll use this to build a free preview of your website, personalized to your business. You pay nothing until you've seen it.</p>
+    <p class="steps-note">Fields marked * are required. Everything else helps but is optional.</p>
+  </header>
+
+  <form action="https://formsubmit.co/sightcraft.studio@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New website request — sightcraft.studio">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+
+    <fieldset>
+      <legend>The basics</legend>
+      <div class="field row2">
+        <div>
+          <label for="bizname">Business name *</label>
+          <input type="text" id="bizname" name="Business name" required placeholder="e.g. Smith Plumbing LLC">
+        </div>
+        <div>
+          <label for="yourname">Your name *</label>
+          <input type="text" id="yourname" name="Owner name" required placeholder="Mike Smith">
+        </div>
+      </div>
+      <div class="field row2">
+        <div>
+          <label for="industry">What kind of business? *</label>
+          <input type="text" id="industry" name="Industry" required placeholder="e.g. plumbing, salon, restaurant">
+        </div>
+        <div>
+          <label for="citystate">City &amp; state *</label>
+          <input type="text" id="citystate" name="City and state" required placeholder="Austin, TX">
+        </div>
+      </div>
+      <div class="field row2">
+        <div>
+          <label for="email">Business email *</label>
+          <input type="email" id="email" name="Email" required placeholder="mike@smithplumbing.com">
+        </div>
+        <div>
+          <label for="phone">Business phone</label>
+          <input type="tel" id="phone" name="Phone" placeholder="(512) 555-0123">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>What goes on the site</legend>
+      <div class="field">
+        <label for="about">Describe your business in a few sentences *</label>
+        <textarea id="about" name="About the business" required placeholder="Family-owned plumbing company serving Austin since 2008. We specialize in residential repairs and emergency services..."></textarea>
+      </div>
+      <div class="field">
+        <label for="services">What services or products do you offer? *</label>
+        <textarea id="services" name="Services" required placeholder="One per line — e.g.&#10;Water heater repair&#10;Drain cleaning&#10;24/7 emergency calls"></textarea>
+      </div>
+      <div class="field">
+        <label for="area">What area do you serve?</label>
+        <input type="text" id="area" name="Service area" placeholder="Austin, Cedar Park, Round Rock">
+      </div>
+      <div class="field">
+        <label>What should the site have? <small>— pick all that apply</small></label>
+        <div class="choices">
+          <input type="checkbox" id="f1" name="Features" value="Online booking"><label for="f1">Online booking</label>
+          <input type="checkbox" id="f2" name="Features" value="Photo gallery"><label for="f2">Photo gallery</label>
+          <input type="checkbox" id="f3" name="Features" value="Menu / price list"><label for="f3">Menu / price list</label>
+          <input type="checkbox" id="f4" name="Features" value="Customer reviews"><label for="f4">Customer reviews</label>
+          <input type="checkbox" id="f5" name="Features" value="Contact form"><label for="f5">Contact form</label>
+          <input type="checkbox" id="f6" name="Features" value="Map and directions"><label for="f6">Map &amp; directions</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>The look</legend>
+      <div class="field">
+        <label>What vibe fits your business? *</label>
+        <div class="choices">
+          <input type="radio" id="v1" name="Style vibe" value="Clean and professional" required><label for="v1">Clean &amp; professional</label>
+          <input type="radio" id="v2" name="Style vibe" value="Warm and friendly"><label for="v2">Warm &amp; friendly</label>
+          <input type="radio" id="v3" name="Style vibe" value="Bold and modern"><label for="v3">Bold &amp; modern</label>
+          <input type="radio" id="v4" name="Style vibe" value="Elegant and upscale"><label for="v4">Elegant &amp; upscale</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="colors">Brand colors, if you have them</label>
+        <input type="text" id="colors" name="Colors" placeholder="e.g. navy blue and gold, or 'whatever looks best'">
+      </div>
+      <div class="field">
+        <label for="likes">Any websites you like the look of?</label>
+        <input type="text" id="likes" name="Sites they like" placeholder="Paste a link or two">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Where you are online now</legend>
+      <div class="field row2">
+        <div>
+          <label for="current">Current website, if any</label>
+          <input type="url" id="current" name="Current website" placeholder="https://...">
+        </div>
+        <div>
+          <label for="gbp">Google Business Profile</label>
+          <input type="url" id="gbp" name="Google profile" placeholder="https://maps.google.com/...">
+        </div>
+      </div>
+      <div class="field row2">
+        <div>
+          <label for="fb">Facebook</label>
+          <input type="url" id="fb" name="Facebook" placeholder="https://facebook.com/...">
+        </div>
+        <div>
+          <label for="ig">Instagram</label>
+          <input type="url" id="ig" name="Instagram" placeholder="https://instagram.com/...">
+        </div>
+      </div>
+      <div class="field">
+        <label for="anything">Anything else I should know?</label>
+        <textarea id="anything" name="Anything else" placeholder="Deadlines, ideas, things you hate on your current site..."></textarea>
+      </div>
+    </fieldset>
+
+    <div class="submit-row">
+      <button type="submit">Send it — get my free preview</button>
+      <p>You'll hear back within 2 days with a live preview link.<br>No payment, no commitment.</p>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
