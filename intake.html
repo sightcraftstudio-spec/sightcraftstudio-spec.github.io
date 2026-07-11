@@ -145,10 +145,15 @@
         <input type="text" id="area" name="Service area" placeholder="Austin, Cedar Park, Round Rock">
       </div>
       <div class="field">
-        <label for="photos">Photos of your work or your business <small>— up to 5, the best ones you have</small></label>
-        <input type="file" id="photos" name="Photos" accept="image/*" multiple
+        <label>Photos of your work or your business <small>— up to 3 here, keep them under 10MB total</small></label>
+        <input type="file" id="photo1" name="Photo 1" accept="image/*"
           style="padding:10px; border:1px dashed var(--line); border-radius:8px; width:100%; background:var(--bg-soft); font-size:14px; cursor:pointer;">
-        <p style="font-size:13px; color:var(--muted); margin-top:6px;">Real photos beat stock photos every time. If you have lots, send the rest to sightcraft.studio@gmail.com after submitting.</p>
+        <input type="file" id="photo2" name="Photo 2" accept="image/*"
+          style="padding:10px; border:1px dashed var(--line); border-radius:8px; width:100%; background:var(--bg-soft); font-size:14px; cursor:pointer; margin-top:8px;">
+        <input type="file" id="photo3" name="Photo 3" accept="image/*"
+          style="padding:10px; border:1px dashed var(--line); border-radius:8px; width:100%; background:var(--bg-soft); font-size:14px; cursor:pointer; margin-top:8px;">
+        <p id="photo-warning" style="font-size:13px; color:#c0392b; margin-top:6px; display:none;">These photos are too big to send through the form — email them to sightcraft.studio@gmail.com instead, and clear the photo fields to submit.</p>
+        <p style="font-size:13px; color:var(--muted); margin-top:6px;">Real photos beat stock photos every time. Have more than 3? Email them to sightcraft.studio@gmail.com after submitting.</p>
       </div>
       <div class="field">
         <label>What should the site have? <small>— pick all that apply</small></label>
@@ -218,6 +223,22 @@
     </div>
   </form>
 </div>
+
+<script>
+  var photoInputs = [document.getElementById('photo1'), document.getElementById('photo2'), document.getElementById('photo3')];
+  var warning = document.getElementById('photo-warning');
+  var LIMIT = 9.5 * 1024 * 1024;
+  function checkSizes() {
+    var total = 0;
+    photoInputs.forEach(function(inp){ if (inp.files.length) total += inp.files[0].size; });
+    warning.style.display = total > LIMIT ? 'block' : 'none';
+    return total <= LIMIT;
+  }
+  photoInputs.forEach(function(inp){ inp.addEventListener('change', checkSizes); });
+  document.querySelector('form').addEventListener('submit', function(e){
+    if (!checkSizes()) { e.preventDefault(); warning.scrollIntoView({behavior:'smooth', block:'center'}); }
+  });
+</script>
 
 </body>
 </html>
